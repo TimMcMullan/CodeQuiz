@@ -1,0 +1,120 @@
+
+h2 {
+    color: rgb(43, 8, 183)
+}
+
+h3 {
+    font-size: 2rem;
+    color:rgb(43, 8, 183);
+    font-weight: bolder;
+}
+#highScores {
+    align-items: left
+}
+
+#highScores:hover {
+    font-weight:bolder
+}
+
+#questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 60vw;
+  background-color: #f0ead6
+}
+
+#scoreBox {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 60vw;
+  background-color: #f0ead6
+}
+#startBox {
+    display: flex;
+    justify-content: center;
+    margin: 80px auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 60vw;
+  background-color: #f0ead6;
+  cursor: pointer
+}
+
+#timer {
+    align-items: right;
+    margin-right: 4rem;
+}
+
+#top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blanchedalmond;
+
+}
+
+.button {
+    max-width: 30rem;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.correctAnswer {
+    background-color: green;
+    color: white;
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.game-over {
+    font-weight: bolder;
+    color: white;
+    background-color: red
+}
+
+.hide {
+    display: none
+}
+
+.nav-item {
+    display: flex;
+    margin: 0, 4rem;
+}
+
+.preSelect {
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: blanchedalmond;
+    color: blue;
+}
+
+.select {
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: blue;
+    color: blanchedalmond
+}
+
+
+.wrongAnswer {
+    background-color: red;
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+}

@@ -15,8 +15,12 @@ let scoreBoxEl = document.getElementById('scoreBox');
 // let hiScores = [];
 let hiFive;
 let preve_exe = false;
-const initialInputEl = document.getElementById('initalInput');
-const scoreInputEl = document.getElementById('scoreInput')
+const initialInputEl = document.getElementById('initialInput');
+
+
+
+
+let playerInitials;
 
 function startClock() {
     let timeInterval = setInterval(function () {
@@ -140,11 +144,15 @@ let gameEnd = () => {
 
 saveButton = () => {
     console.log('saveButton timeLeft '+playerScore);
+    pScore = playerScore;
 let sButton = document.createElement("button");
 sButton.textContent = "Save your score?";
 sButton.className = "button";
 scoreBoxEl.append(sButton);
-sButton.onclick = saveScore();
+sButton.onclick = saveScore;
+// sButton.addEventListener("click", function () {
+//     saveScore()
+// });
 };
 
 // saveScore = (hiScores, timeLeft) => {
@@ -158,48 +166,89 @@ sButton.onclick = saveScore();
 // }
 
 function saveScore() {
-    console.log(playerScore);
+    console.log(pScore);
     // console.log(hiScores);
     // let hiScores = [];
     
     // console.log(hiScores);
-    scoreInputEl.removeAttribute("class");
-    let playerInitials = initialInputEl.value;
+    scoreBoxEl.innerHTML = "";
+    let saveText = document.createElement("h3")
+    saveText.textContent = "Enter Two Initials then save";
+    scoreBoxEl.append(saveText);
+
+    // let initialBox = document.createElement("<h3>");
+    // initialBox.removeAttribute("class");
+    // scoreInputEl.append(initialInputEl);
+    
+    let initialInput = document.createElement("p");
+    initialInput.innerHTML = `
+    Enter initials: <input type="text" id="initials" max="2" />
+    `;
+    scoreBoxEl.append(initialInput);
+    let scrButton = document.createElement("button");
+    scrButton.setAttribute("class", "button");
+    scrButton.textContent = "click here to save";
+    
+    
+    scoreBoxEl.append(scrButton);
+    // scrButton.onclick = storeScore;
+    scrButton.addEventListener("click", function() {
+    // console.log("iIEl.value = "+initialInputEl.value);
+// };
+    // storeScore = () => { 
+        console.log('storeScore fired');
+    // console.log("iIEl.value = "+initialInputEl.value);
+
+    playerInitials = initials.value;
+    console.log(playerInitials);
     if (playerInitials !== "") {
     
+    // getScores = () => {
+        console.log('getting scores');
+        let getScores = JSON.parse(
+            window.localStorage.getItem("hiScores")) || [];
+    // };
+    console.log('building object');
     let plyrScore = {
         initials: playerInitials,
         score: playerScore
     };
-    new Promise 
-    getHighScores();
-    getScores.push(plyrScore);
+    console.log(plyrScore);
+    // const getThoseScores = new Promise((pushScores) => {
+    // getHighScores(getScores);
+// });
+    // pushScores = () => {
+        console.log('pushing scores');
+        getScores.push(plyrScore);
     window.localStorage.setItem("hiScores", JSON.stringify(getScores));
-}
+    }
+    console.log('scores pushed');
 
+// }
+});
 };
-getHighScores = () => {
-    getScores = JSON.parse(
-    window.localStorage.getItem("hiScores")) || [];
+// getHighScores = () => {
+//     getScores = JSON.parse(
+//     window.localStorage.getItem("hiScores")) || [];
 
     
-    getScores.sort();
-    console.log(getScores);
-    scoresToDisplay = () => {
-        let i = 0;
-        let highFive = [];
-        while (i < 5) {
-            i++;
-            highFive.push(scoresToDisplay[-i]);
-            hiFive = highFive;
-            console.log('highFive = ' + highFive);
-            console.log('hiFive = ' + hiFive);
-        };
-    };
-    console.log(hiFive);
-    console.log(getScores);
+//     getScores.sort();
+//     console.log(getScores);
+//     scoresToDisplay = () => {
+//         let i = 0;
+//         let highFive = [];
+//         while (i < 5) {
+//             i++;
+//             highFive.push(scoresToDisplay[-i]);
+//             hiFive = highFive;
+//             console.log('highFive = ' + highFive);
+//             console.log('hiFive = ' + hiFive);
+//         };
+//     };
+//     console.log(hiFive);
+//     console.log(getScores);
     // return(hiScores);
-};
+
 
 // showHighScores = () => {
 
@@ -208,5 +257,12 @@ getHighScores = () => {
 // saveScore = () => {
 //     JSON.parse(local.window.setItem("highScores"));
 // }
+
+function checkForEnter(event) {
+    // "13" represents the enter key
+    if (event.key === "Enter") {
+      saveScore();
+    }
+  }
 
 startBoxEl.onclick = startGame;

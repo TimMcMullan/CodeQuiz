@@ -81,9 +81,11 @@ h3 {
 }
 
 .button {
-    max-width: 30rem;
+    width: 30rem;
     border-radius: 9px;
     cursor: pointer;
+    padding: .5rem;
+    font-size: 1.5rem;
 }
 
 .correctAnswer {
@@ -91,7 +93,7 @@ h3 {
     color: white;
     font-size: 2rem;
     margin: 1rem;
-    padding: 1rem;
+    
 }
 
 .game-over {

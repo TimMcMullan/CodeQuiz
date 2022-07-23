@@ -68,7 +68,7 @@ function loadQuestion() {
                 // call function for feedback and next question
                 userAnswer(userResponse);
             });
-            // choiceButton.onClick = userAnswer;
+            
             quizBox.append(choiceButton);
         });
     };
@@ -98,7 +98,7 @@ function userAnswer(userResponse) {
 
 
 // timer counts down and questions load
-function startGame() {
+startGame = () => {
     startClock();
     loadQuestion();
 };
@@ -106,17 +106,19 @@ function startGame() {
 // play again button 
 let rButton = () => {
     let reButton = document.createElement("button");
-
+    reButton.setAttribute("style", "background-color: none");
     reButton.textContent = `Click here to re-start`;
     reButton.className = "button";
-    scoreBoxEl.append(reButton);
     reButton.onclick = replayGame;
+    scoreBoxEl.append(reButton);
+    
 };
 
 // restart game 
 replayGame = () => {
     timeLeft = questions.length * 15;
-
+    console.log('replay game clicked');
+    console.log('timeLeft reset to ' + timeLeft);
     window.location.reload();
 };
 
@@ -223,6 +225,8 @@ function saveScore() {
     window.localStorage.setItem("hiScores", JSON.stringify(getScores));
     }
     console.log('scores pushed');
+    scoreBoxEl.innerHTML = "";
+    rButton();
 
 // }
 });
